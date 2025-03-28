@@ -1,5 +1,6 @@
 package com.apiblogManager.Blog_Manager.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -23,9 +24,16 @@ public class Article {
     private Long id;
     private String title;
     private String content;
+    @Column(name = "publication_date")
     private LocalDateTime publicationDate;
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
+
+    @PrePersist
+    protected void onCreate() {
+        publicationDate = LocalDateTime.now();
+    }
 
     public void addComment(Comment comment) {
         comments.add(comment);

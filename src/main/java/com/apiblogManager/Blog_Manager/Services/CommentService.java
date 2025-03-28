@@ -7,6 +7,8 @@ import com.apiblogManager.Blog_Manager.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CommentService {
     private final CommentRepository commentRepository;
@@ -24,5 +26,9 @@ public class CommentService {
         comment.setContent(request.getContent());
         comment.setArticle(article);
         return commentRepository.save(comment);
+    }
+
+    public List<Comment> getCommentsByArticleId(Long articleId) {
+        return commentRepository.findByArticleId(articleId);
     }
 }

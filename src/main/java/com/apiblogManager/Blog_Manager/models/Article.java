@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class Article {
     private Long id;
     private String title;
     private String content;
+    @CreatedDate
     @Column(name = "publication_date")
     private LocalDateTime publicationDate;
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,7 +25,7 @@ public class ArticleService {
         Article article = new Article();
         article.setTitle(request.getTitle());
         article.setContent(request.getContent());
-        article.setPublicationDate(request.getPublicationDate());
+        article.setPublicationDate(LocalDateTime.now());
         return articleRepository.save(article);
     }
 
@@ -43,7 +44,7 @@ public class ArticleService {
         Article article = getArticleById(id);
         article.setTitle(request.getTitle());
         article.setContent(request.getContent());
-        article.setPublicationDate(request.getPublicationDate());
+        article.setPublicationDate(LocalDateTime.now());
         return articleRepository.save(article);
     }
 

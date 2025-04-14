@@ -1,9 +1,11 @@
 package com.apiblogManager.Blog_Manager.DTOs;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -13,8 +15,11 @@ public class ArticleRequest {
     private String title;
     @NotBlank
     private String content;
-    @NotNull
-    private LocalDateTime publicationDate;
+
+    //@NotNull
+    //@CreatedDate
+    //@Column(name = "created_at", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    //private LocalDateTime publicationDate;
 
     public String getTitle() {
         return title;
@@ -32,11 +37,11 @@ public class ArticleRequest {
         this.content = content;
     }
 
-    public LocalDateTime getPublicationDate() {
-        return publicationDate;
-    }
+    //public LocalDateTime getPublicationDate() {
+    //    return publicationDate;
+    //}
 
-    public void setPublicationDate(LocalDateTime publicationDate) {
-        this.publicationDate = publicationDate;
-    }
+    //public void setPublicationDate(LocalDateTime publicationDate) {
+    //    this.publicationDate = publicationDate;
+    //}
 }
